@@ -1,0 +1,11 @@
+{
+    "extends": "google",
+    "env": {
+      "es6": true,
+      "browser": true,
+      "jasmine": true
+    },
+    "rules": {
+      "require-jsdoc": 0
+    }
+}

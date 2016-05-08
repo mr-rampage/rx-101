@@ -1,0 +1,56 @@
+{
+  "name": "timesheet",
+  "version": "0.0.1",
+  "description": "Sample Timesheet",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm run lint && karma start",
+    "clean": "rm -rf dist && mkdir -p dist/js",
+    "browserify": "browserify ./src/js/app.js > ./dist/js/app.js",
+    "build:js": "npm run browserify",
+    "build:css": "cp -R ./src/css ./dist/",
+    "build:html": "cp ./src/*.html ./dist/",
+    "build": "npm run clean && npm run build:html && npm run build:css && npm run build:js",
+    "prebuild": "npm run test",
+    "lint": "eslint src/**/*.js",
+    "serve": "http-server dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mr-rampage/timesheet.git"
+  },
+  "keywords": [
+    "rxjs"
+  ],
+  "author": "Mr Rampage",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mr-rampage/timesheet/issues"
+  },
+  "homepage": "https://github.com/mr-rampage/timesheet#readme",
+  "devDependencies": {
+    "babel-polyfill": "latest",
+    "babel-preset-es2015": "latest",
+    "babelify": "latest",
+    "browserify": "latest",
+    "eslint": "latest",
+    "eslint-config-google": "latest",
+    "jasmine-core": "latest",
+    "karma": "latest",
+    "karma-browserify": "latest",
+    "karma-jasmine": "latest",
+    "karma-phantomjs-launcher": "latest",
+    "karma-spec-reporter": "latest",
+    "phantomjs-prebuilt": "latest",
+    "watchify": "latest"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "dependencies": {
+    "rx": "^4.1.0",
+    "virtual-dom": "^2.1.1"
+  }
+}
