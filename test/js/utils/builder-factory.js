@@ -35,3 +35,5 @@ function builderFactory() {
 
   return Object.freeze(construct.apply(null, arguments));
 }
+
+export default builderFactory;
