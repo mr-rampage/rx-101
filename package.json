@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && karma start",
     "clean": "rm -rf dist && mkdir -p dist/js",
-    "browserify": "browserify ./src/js/app.js > ./dist/js/app.js",
+    "browserify": "browserify ./src/js/app.js -o ./dist/js/app.js",
     "build:js": "npm run browserify",
     "build:css": "cp -R ./src/css ./dist/",
     "build:html": "cp ./src/*.html ./dist/",
@@ -51,6 +51,7 @@
   },
   "dependencies": {
     "rx": "^4.1.0",
+    "rx-dom-events": "^7.0.3",
     "virtual-dom": "^2.1.1"
   }
 }
