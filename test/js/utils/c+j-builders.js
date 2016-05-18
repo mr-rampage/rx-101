@@ -1,7 +1,7 @@
 import builderFactory from "./builder-factory"
 
 let dataItemBuilder = builderFactory(
-  ['name'],
+  ['name', 'type'],
   [
     ['value', 'array', 'object'],
     ['array', 'value', 'object'],

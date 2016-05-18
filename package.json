@@ -50,8 +50,8 @@
     ]
   },
   "dependencies": {
+    "jqlite": "^0.2.37",
     "rx": "^4.1.0",
-    "rx-dom-events": "^7.0.3",
     "virtual-dom": "^2.1.1"
   }
 }

@@ -1,18 +1,18 @@
-import Rx from "rx-dom-events/rx.dom.events";
-import DOMFactory from "./dom-factory"
+import Rx from "rx/dist/rx.lite";
+import DOMFactory from "../utils/dom-factory";
 
-function createComponent(name, value) {
-  let template = `<input type="text" name="${name}" value="${value}"/>`;
-  let element = DOMFactory(template);
+function createComponent(config) {
+  const element = DOMFactory(config);
 
-  let observable = Rx.DOM.keyup(element)
+  const observable = Rx.Observable.fromEvent(element, 'keyup')
     .pluck('target', 'value')
-    .filter(text => text.length > 2);
+    .map(text => text.length > 2 ? text : '')
+    .distinctUntilChanged();
 
-  return {
+  return Object.freeze({
     stream: observable,
     view: element
-  };
+  });
 }
 
 export default createComponent;
