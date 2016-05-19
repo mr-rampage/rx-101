@@ -1,18 +1,25 @@
 import Rx from "rx/dist/rx.lite";
 import DOMFactory from "../utils/dom-factory";
+import componentObserver from "./component-observer"
 
-function createComponent(config) {
+function createUserNameComponent(config) {
   const element = DOMFactory(config);
+  const isValidUserName = userName => !!userName && userName.length > 2;
 
-  const observable = Rx.Observable.fromEvent(element, 'keyup')
+  const userNameObservable = Rx.Observable.fromEvent(element.find('input'), 'keyup')
     .pluck('target', 'value')
-    .map(text => text.length > 2 ? text : '')
+    .map(userName => isValidUserName(userName) ? userName : '')
     .distinctUntilChanged();
 
+  const invalidUserNameObserver = componentObserver
+    .createInvalidComponentObserver(element, isValidUserName);
+
+  userNameObservable.subscribe(invalidUserNameObserver);
+
   return Object.freeze({
-    stream: observable,
+    stream: userNameObservable,
     view: element
   });
 }
 
-export default createComponent;
+export default createUserNameComponent;
