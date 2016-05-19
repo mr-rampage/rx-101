@@ -19,7 +19,7 @@ function createTextInput(config) {
 }
 
 function domFactory(config) {
-  return createFormComponent(config)[0];
+  return createFormComponent(config);
 }
 
 export default domFactory;

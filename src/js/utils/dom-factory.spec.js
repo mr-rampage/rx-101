@@ -3,19 +3,31 @@ import DataItemBuilder from "../../../test/js/utils/c+j-builders.js"
 import $ from "jqlite/jqlite.min"
 
 describe('DOMFactory', () => {
-  it('should create a labelled text input', () => {
-    const textItem = DataItemBuilder.withName('foo').withPrompt('label').withType('text').build();
+  let view;
 
-    const actual = DOMFactory(textItem);
-    expect(actual.tagName).toBe('LABEL');
-    expect(actual.children.length).toBe(2);
+  beforeEach(() => {
+    const textItem = DataItemBuilder.withName('foo')
+      .withPrompt('label')
+      .withType('text')
+      .build();
 
-    const label = actual.firstChild;
-    expect(label.textContent).toBe('label');
+    view = DOMFactory(textItem);
+  });
 
-    const textBox = actual.lastChild;
-    expect(textBox.tagName).toBe('INPUT');
-    expect(textBox.attributes.getNamedItem('type').value).toBe('text');
-    expect(textBox.attributes.getNamedItem('name').value).toBe('foo');
+  it('should create a labeled element', () => {
+    expect(view.prop('tagName')).toBe('LABEL');
+    expect(view.children().length).toBe(2);
+  });
+
+  it('should have a label', () => {
+    const label = view.children().first();
+    expect(label.text()).toBe('label');
+  });
+
+  it('should have a text input', () => {
+    const textBox = view.children().last();
+    expect(textBox.prop('tagName')).toBe('INPUT');
+    expect(textBox.attr('type')).toBe('text');
+    expect(textBox.attr('name')).toBe('foo');
   });
 });
