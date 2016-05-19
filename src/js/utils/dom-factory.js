@@ -1,4 +1,4 @@
-import $ from "jqlite/jqlite.min"
+import $ from "cash-dom/dist/cash.min"
 
 function createFormComponent(config) {
   const label = $(`<label><span>${config.prompt || ''}</span></label>`);

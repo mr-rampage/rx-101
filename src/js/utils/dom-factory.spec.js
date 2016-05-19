@@ -1,6 +1,6 @@
 import DOMFactory from "./dom-factory";
 import DataItemBuilder from "../../../test/js/utils/c+j-builders.js"
-import $ from "jqlite/jqlite.min"
+import $ from "cash-dom/dist/cash.min"
 
 describe('DOMFactory', () => {
   let view;
