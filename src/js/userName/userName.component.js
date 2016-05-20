@@ -1,6 +1,6 @@
 import Rx from "rx/dist/rx.lite";
 import DOMFactory from "../utils/dom-factory";
-import componentObserverFactory from "./component-observer"
+import componentObserverFactory from "../component/component-observer.factory"
 
 function createUserNameComponent(config) {
   const element = DOMFactory(config);

@@ -1,4 +1,4 @@
-import userNameFactory from "./component/userName";
+import userNameFactory from "./userName/userName.component";
 import loggerFactory from "./utils/logger";
 import $ from "cash-dom/dist/cash.min";
 

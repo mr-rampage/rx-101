@@ -1,5 +1,5 @@
 import Rx from "rx/dist/rx.lite";
-import UserName from "./userName";
+import UserName from "./userName.component";
 import DataItemBuilder from "../../../test/js/utils/c+j-builders";
 
 describe('UserName Component', () => {
