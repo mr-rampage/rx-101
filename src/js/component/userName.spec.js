@@ -26,7 +26,7 @@ describe('UserName Component', () => {
 
   function doKeyUpTest(inputValue, expectation) {
     input.val(inputValue);
-    input.trigger('keyup');
+    input.trigger('input');
     expect(userName).toBe(expectation);
   }
 });
