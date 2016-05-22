@@ -11,14 +11,19 @@ import org.springframework.web.context.request.async.DeferredResult;
 public class UsernameController {
 	
 	@Autowired
-	UsernameService usernameService;
+  UsernameService usernameService;
+
+  @RequestMapping(value = "ping")
+  public String ping() {
+    return "pong";
+  }
 	
-    @RequestMapping(value = "{username}", params = {"isValid"})
-    public DeferredResult<Boolean> isValid(@PathVariable String username) {
+  @RequestMapping(value = "{username}", params = {"isValid"})
+  public DeferredResult<Boolean> isValid(@PathVariable String username) {
         DeferredResult<Boolean> result = new DeferredResult<>();
         usernameService.isValid(username).subscribe(
         		isValid -> result.setResult(isValid),
         		e -> result.setErrorResult(e));
     	return result;
-    }
+  }
 }
