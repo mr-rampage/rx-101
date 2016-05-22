@@ -1,15 +1,15 @@
-import userNameFactory from "./userName/userName.component";
+import usernameFactory from "./username/username.component";
 import loggerFactory from "./utils/logger";
 import $ from "cash-dom/dist/cash.min";
 
-const userNameConfig = {
+const usernameConfig = {
   prompt: 'User Name',
-  name: 'userName',
+  name: 'username',
   value: '',
   type: 'text'
 };
 $(document).ready(() => {
-  const userNameInput = userNameFactory(userNameConfig);
-  userNameInput.stream.subscribe(loggerFactory());
-  $('body').append(userNameInput.view);
+  const usernameInput = usernameFactory(usernameConfig);
+  usernameInput.stream.subscribe(loggerFactory());
+  $('body').append(usernameInput.view);
 });

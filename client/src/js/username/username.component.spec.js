@@ -1,18 +1,18 @@
 import Rx from "rx/dist/rx.lite";
-import UserName from "./userName.component";
+import Username from "./username.component";
 import DataItemBuilder from "../../../test/js/utils/c+j-builders";
 
-describe('UserName Component', () => {
-  let input, userName;
+describe('Username Component', () => {
+  let input, username;
 
   beforeEach(() => {
-    const userNameConfig = DataItemBuilder.withName('foo')
+    const usernameConfig = DataItemBuilder.withName('foo')
       .withPrompt('label').withType('text').build();
 
-    const userNameComponent = UserName(userNameConfig);
-    userNameComponent.stream.subscribe(value => userName = value);
+    const usernameComponent = Username(usernameConfig);
+    usernameComponent.stream.subscribe(value => username = value);
 
-    input = userNameComponent.view.find('input');
+    input = usernameComponent.view.find('input');
   });
 
   it('should default to blank for invalid input', () => {
@@ -20,13 +20,13 @@ describe('UserName Component', () => {
     doKeyUpTest('a', '');
   });
 
-  it('should provide a userName for input greater than two characters', () => {
+  it('should provide a username for input greater than two characters', () => {
     doKeyUpTest('abc', 'abc');
   });
 
   function doKeyUpTest(inputValue, expectation) {
     input.val(inputValue);
     input.trigger('input');
-    expect(userName).toBe(expectation);
+    expect(username).toBe(expectation);
   }
 });

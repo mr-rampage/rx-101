@@ -1,6 +1,6 @@
-import userNameService from "./userName.service"
+import usernameService from "./username.service"
 
-describe('userNameService', () => {
+describe('usernameService', () => {
   beforeEach(() => {
     jasmine.Ajax.install();
   });

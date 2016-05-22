@@ -7186,9 +7186,9 @@ Observable.fromNodeCallback = function (fn, ctx, selector) {
 },{"_process":1}],4:[function(require,module,exports){
 "use strict";
 
-var _userName = require("./userName/userName.component");
+var _username = require("./username/username.component");
 
-var _userName2 = _interopRequireDefault(_userName);
+var _username2 = _interopRequireDefault(_username);
 
 var _logger = require("./utils/logger");
 
@@ -7200,19 +7200,19 @@ var _cash2 = _interopRequireDefault(_cash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var userNameConfig = {
+var usernameConfig = {
   prompt: 'User Name',
-  name: 'userName',
+  name: 'username',
   value: '',
   type: 'text'
 };
 (0, _cash2.default)(document).ready(function () {
-  var userNameInput = (0, _userName2.default)(userNameConfig);
-  userNameInput.stream.subscribe((0, _logger2.default)());
-  (0, _cash2.default)('body').append(userNameInput.view);
+  var usernameInput = (0, _username2.default)(usernameConfig);
+  usernameInput.stream.subscribe((0, _logger2.default)());
+  (0, _cash2.default)('body').append(usernameInput.view);
 });
 
-},{"./userName/userName.component":6,"./utils/logger":8,"cash-dom/dist/cash.min":2}],5:[function(require,module,exports){
+},{"./username/username.component":6,"./utils/logger":8,"cash-dom/dist/cash.min":2}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -7262,27 +7262,27 @@ var _componentObserver2 = _interopRequireDefault(_componentObserver);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function createUserNameComponent(config) {
+function createUsernameComponent(config) {
   var element = (0, _domFactory2.default)(config);
-  var isValidUserName = function isValidUserName(userName) {
-    return !!userName && userName.length > 2;
+  var isValidUserName = function isValidUserName(username) {
+    return !!username && username.length > 2;
   };
 
-  var userNameObservable = _rx2.default.Observable.fromEvent(element.find('input'), 'input').pluck('target', 'value').map(function (userName) {
-    return isValidUserName(userName) ? userName : '';
+  var usernameObservable = _rx2.default.Observable.fromEvent(element.find('input'), 'input').pluck('target', 'value').map(function (username) {
+    return isValidUserName(username) ? username : '';
   }).distinctUntilChanged();
 
   var invalidUserNameObserver = _componentObserver2.default.createInvalidComponentObserver(element, isValidUserName);
 
-  userNameObservable.subscribe(invalidUserNameObserver);
+  usernameObservable.subscribe(invalidUserNameObserver);
 
   return Object.freeze({
-    stream: userNameObservable,
+    stream: usernameObservable,
     view: element
   });
 }
 
-exports.default = createUserNameComponent;
+exports.default = createUsernameComponent;
 
 },{"../component/component-observer.factory":5,"../utils/dom-factory":7,"rx/dist/rx.lite":3}],7:[function(require,module,exports){
 'use strict';
