@@ -34,7 +34,7 @@ node_modules
 
 *.swp
 
-/dist
+dist/
 
 .project
 
