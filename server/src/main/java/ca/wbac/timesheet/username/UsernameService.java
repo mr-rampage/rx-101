@@ -22,9 +22,7 @@ class UsernameService {
 			return Observable.combineLatest(
 				isAvailable(username), 
 				offensiveWordService.containsOffensiveWords(username),
-				(isAvailable, isOffensive) -> {
-					return isAvailable && !isOffensive;
-				});
+				(isAvailable, isOffensive) -> isAvailable && !isOffensive);
 		}
 	}
 
