@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/mr-rampage/timesheet#readme",
   "devDependencies": {
+    "babel-core": "latest",
     "babel-polyfill": "latest",
     "babel-preset-es2015": "latest",
     "babelify": "latest",

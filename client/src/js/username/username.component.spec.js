@@ -1,6 +1,7 @@
-import Rx from "rx/dist/rx.lite";
+import Rx from "rx/dist/rx.all";
 import Username from "./username.component";
 import DataItemBuilder from "../../../test/js/utils/c+j-builders";
+import usernameService from "./username.service"
 
 describe('Username Component', () => {
   let input, username;
@@ -20,8 +21,8 @@ describe('Username Component', () => {
     doKeyUpTest('a', '');
   });
 
-  it('should provide a username for input greater than two characters', () => {
-    doKeyUpTest('abc', 'abc');
+  it('should default to blank for valid input before debounce', () => {
+    doKeyUpTest('abcddd', '');
   });
 
   function doKeyUpTest(inputValue, expectation) {
