@@ -64,25 +64,33 @@
 	<build>
 		<plugins>
 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.7</version>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<webResources>
+						<resource>
+							<directory>${project.build.directory}/static/</directory>
+						</resource>
+					</webResources>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
 				<executions>
 					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
+						<id>unpack-dependencies</id>
+						<phase>compile</phase>
 						<goals>
-							<goal>copy-resources</goal>
+							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${basedir}/target/classes/static</outputDirectory>
-							<resources>
-								<resource>
-									<directory>${basedir}/../client/dist</directory>
-									<includes>
-										<include>**</include>
-									</includes>
-								</resource>
-							</resources>
+							<includeArtifactIds>client</includeArtifactIds>
+							<overWrite>false</overWrite>
+							<outputDirectory>${project.build.directory}/static</outputDirectory>
+							<includes>**/*</includes>
 						</configuration>
 					</execution>
 				</executions>
