@@ -10,7 +10,8 @@
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>server</artifactId>
+	<artifactId>timesheet-server</artifactId>
+  <packaging>war</packaging>
 
 	<dependencyManagement>
 		<dependencies>
@@ -59,22 +60,22 @@
 			<version>1.3</version>
 			<scope>test</scope>
 		</dependency>
+    <dependency>
+      <groupId>ca.wbac</groupId>
+      <artifactId>timesheet-client</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<webResources>
-						<resource>
-							<directory>${project.build.directory}/static/</directory>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -87,9 +88,9 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<includeArtifactIds>client</includeArtifactIds>
+							<includeArtifactIds>timesheet-client</includeArtifactIds>
 							<overWrite>false</overWrite>
-							<outputDirectory>${project.build.directory}/static</outputDirectory>
+              <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
 							<includes>**/*</includes>
 						</configuration>
 					</execution>
