@@ -1,0 +1,21 @@
+label {
+  display: block;
+  width: 100%;
+}
+label > * {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: inline-block;
+}
+label > *:first-child {
+  text-align: right;
+  padding-right: 1em;
+  width: 25%;
+}
+label > *:last-child {
+  width: 75%;
+}
+label.invalid > input {
+  border-color: red;
+}
