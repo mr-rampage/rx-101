@@ -1,4 +1,5 @@
 import Rx from "rx/dist/rx.all";
+import componentUtils from "../utils/component-utils";
 import DOMFactory from "../utils/dom-factory";
 import usernameService from "./username.service";
 
@@ -21,6 +22,8 @@ function createUsernameComponent(config, scheduler) {
       return isAvailable ? username : ''
     })
     .distinctUntilChanged();
+
+  componentUtils.markInvalidElement(element, usernameStream);
 
   return Object.freeze({
     stream: usernameStream,
