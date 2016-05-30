@@ -4,13 +4,21 @@ import DataItemBuilder from "../../../test/js/utils/c+j-builders";
 import usernameService from "./username.service"
 
 describe('Username Component', () => {
-  let input, username;
+  let input, username, promiseHelper;
+
+  const scheduler = new Rx.TestScheduler(0);
+
+  beforeEach(() => {
+    spyOn(usernameService, 'isAvailable').and.callFake(() => {
+      return Rx.Observable.just(true);
+    });
+  });
 
   beforeEach(() => {
     const usernameConfig = DataItemBuilder.withName('foo')
       .withPrompt('label').withType('text').build();
 
-    const usernameComponent = Username(usernameConfig);
+    const usernameComponent = Username(usernameConfig, scheduler);
     usernameComponent.stream.subscribe(value => username = value);
 
     input = usernameComponent.view.find('input');
@@ -21,8 +29,19 @@ describe('Username Component', () => {
     doKeyUpTest('a', '');
   });
 
-  it('should default to blank for valid input before debounce', () => {
+  it('should set the username for valid input after debounce', (done) => {
     doKeyUpTest('abcddd', '');
+    scheduler.scheduleAbsolute(null, 100, () => {
+      expect(usernameService.isAvailable).not.toHaveBeenCalled();
+      expect(username).toBe('');
+    });
+    scheduler.scheduleAbsolute(null, 1000, () => {
+      expect(usernameService.isAvailable).toHaveBeenCalled();
+      expect(username).toBe('abcddd');
+      scheduler.stop();
+      done();
+    });
+    scheduler.start();
   });
 
   function doKeyUpTest(inputValue, expectation) {
@@ -30,4 +49,5 @@ describe('Username Component', () => {
     input.trigger('input');
     expect(username).toBe(expectation);
   }
+
 });

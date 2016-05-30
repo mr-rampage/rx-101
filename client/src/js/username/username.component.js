@@ -2,7 +2,7 @@ import Rx from "rx/dist/rx.all";
 import DOMFactory from "../utils/dom-factory";
 import usernameService from "./username.service";
 
-function createUsernameComponent(config) {
+function createUsernameComponent(config, scheduler) {
   const element = DOMFactory(config);
 
   const username = Rx.Observable
@@ -11,7 +11,7 @@ function createUsernameComponent(config) {
     .startWith(config.value);
 
   const isAvailable = username
-    .debounce(500)
+    .debounce(500, scheduler)
     .flatMapLatest(usernameService.isAvailable)
     .startWith(false);
 

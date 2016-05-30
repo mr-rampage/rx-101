@@ -10,7 +10,7 @@
 		<relativePath>../</relativePath>		
 	</parent>
 	<artifactId>timesheet-client</artifactId>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<build>
 		<plugins>
 			<plugin>
