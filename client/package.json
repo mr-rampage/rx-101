@@ -34,7 +34,7 @@
     "babel-preset-es2015": "latest",
     "babelify": "latest",
     "browserify": "latest",
-    "css-concat": "0.0.4",
+    "css-concat": "latest",
     "eslint": "latest",
     "eslint-config-google": "latest",
     "jasmine-core": "latest",
