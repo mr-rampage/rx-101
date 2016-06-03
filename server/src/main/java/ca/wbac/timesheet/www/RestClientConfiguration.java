@@ -1,4 +1,4 @@
-package ca.wbac.timesheet.restclient;
+package ca.wbac.timesheet.www;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

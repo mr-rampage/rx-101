@@ -3,6 +3,7 @@ package ca.wbac.timesheet.username;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
+import ca.wbac.timesheet.www.word.OffensiveWordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

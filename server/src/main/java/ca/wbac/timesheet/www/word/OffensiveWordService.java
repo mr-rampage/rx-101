@@ -1,4 +1,4 @@
-package ca.wbac.timesheet.username;
+package ca.wbac.timesheet.www.word;
 
 import java.net.URI;
 import java.util.Collections;
@@ -17,17 +17,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 import rx.Observable;
 
 @Service
-class OffensiveWordService {
-	private final String OFFENSIVE_WORD_SERVICE = "http://www.purgomalum.com/service/containsprofanity";
+public class OffensiveWordService {
+	private static final String OFFENSIVE_WORD_SERVICE = "http://www.purgomalum.com/www/containsprofanity";
 
 	@Autowired
 	private RestTemplate restTemplate;
 
 	public Observable<Boolean> containsOffensiveWords(String text) {
-		return Observable.<Boolean>create(observer -> {
+		return Observable.create(observer -> {
 			try {
-				Boolean isOffensive = hasOffensiveWords(text);
-				observer.onNext(isOffensive);
+				observer.onNext(hasOffensiveWords(text));
 				observer.onCompleted();
 			} catch (RestClientException e) {
 				observer.onError(e);
@@ -40,8 +39,7 @@ class OffensiveWordService {
 		headers.setAccept(Collections.singletonList(MediaType.TEXT_PLAIN));
 		HttpEntity<String> entity = new HttpEntity<>(headers);
 		ResponseEntity<String> response = restTemplate.exchange(createOffensiveWordQuery(text), HttpMethod.GET, entity, String.class);
-		Boolean isOffensive = Boolean.parseBoolean(response.getBody());
-		return isOffensive;
+		return Boolean.parseBoolean(response.getBody());
 	}
 	
 	private URI createOffensiveWordQuery(String text) {
