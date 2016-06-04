@@ -6,11 +6,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 class Site {
     private String Name;
 
-    public String getName() {
+    Site() {}
+
+    Site(String name) {
+        setName(name);
+    }
+
+    String getName() {
         return Name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         Name = name;
     }
 }
