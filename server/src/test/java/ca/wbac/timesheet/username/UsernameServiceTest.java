@@ -2,7 +2,7 @@ package ca.wbac.timesheet.username;
 
 import static org.mockito.Mockito.when;
 
-import ca.wbac.timesheet.www.word.OffensiveWordService;
+import ca.wbac.timesheet.resource.word.OffensiveWordService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

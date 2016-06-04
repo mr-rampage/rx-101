@@ -1,4 +1,4 @@
-package ca.wbac.timesheet.www.identifier;
+package ca.wbac.timesheet.resource.identifier;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

@@ -1,4 +1,4 @@
-package ca.wbac.timesheet.www.word;
+package ca.wbac.timesheet.resource.word;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -18,7 +18,7 @@ import java.util.Collections;
 
 @Service
 public class OffensiveWordService {
-	private static final String WEB_SERVICE = "http://www.purgomalum.com/www/containsprofanity";
+	private static final String WEB_SERVICE = "http://resource.purgomalum.com/resource/containsprofanity";
 
 	@Autowired
 	private RestTemplate restTemplate;
