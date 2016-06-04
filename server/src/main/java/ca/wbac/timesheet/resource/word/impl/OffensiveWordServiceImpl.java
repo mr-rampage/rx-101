@@ -38,15 +38,16 @@ public class OffensiveWordServiceImpl implements OffensiveWordService {
 
 	private Boolean isOffensive(String text) {
 		URI resource = createResource(text);
-		ResponseEntity<String> response = makeRequest(resource);
+		ResponseEntity response = makeRequest(resource);
 		if (response.getStatusCode() == HttpStatus.OK && response.hasBody()) {
-			return Boolean.parseBoolean(response.getBody());
+			ResponseEntity<String> stringResponse = (ResponseEntity<String>) response;
+			return Boolean.parseBoolean(stringResponse.getBody());
 		} else {
 			return null;
 		}
 	}
 
-	private ResponseEntity<String> makeRequest(URI resource) {
+	private ResponseEntity makeRequest(URI resource) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Collections.singletonList(MediaType.TEXT_PLAIN));
 		HttpEntity<String> entity = new HttpEntity<>(headers);
