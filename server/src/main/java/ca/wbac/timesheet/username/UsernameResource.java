@@ -8,7 +8,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 
 @RestController
 @RequestMapping(value = "/api/username")
-public class UsernameController {
+public class UsernameResource {
 	
 	@Autowired
   UsernameService usernameService;

@@ -1,16 +1,15 @@
-package ca.wbac.timesheet.username;
+package ca.wbac.timesheet.username.impl;
 
-import static org.mockito.Mockito.when;
-
+import ca.wbac.timesheet.observer.BooleanObserver;
 import ca.wbac.timesheet.resource.word.OffensiveWordService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-
-import ca.wbac.timesheet.observer.BooleanObserver;
 import rx.Observable;
+
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UsernameServiceTest {
@@ -19,7 +18,7 @@ public class UsernameServiceTest {
 	private OffensiveWordService offensiveWordService;
 
 	@InjectMocks
-	private UsernameService usernameService;
+	private UsernameServiceImpl usernameServiceImpl;
 
 	@Test
 	public void shouldRejectEmptyUsername() {
@@ -49,7 +48,7 @@ public class UsernameServiceTest {
 	
 	private void doIsValidTest(String username, Boolean expected) {
 		BooleanObserver verifyIsExpected = new BooleanObserver(expected);
-		Observable<Boolean> observable = usernameService.isValid(username);
+		Observable<Boolean> observable = usernameServiceImpl.isValid(username);
 		observable.subscribe(verifyIsExpected);
 	}
 	
