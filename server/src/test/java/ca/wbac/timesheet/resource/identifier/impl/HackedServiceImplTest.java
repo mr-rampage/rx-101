@@ -40,4 +40,16 @@ public class HackedServiceImplTest {
                     assertThat(breachedSites, equalTo(expected));
                 });
     }
+
+    @Test
+    public void testGetBreachedSites_withoutIdentifier_returnsEmptyList() {
+        ResponseEntity response = ResponseEntity.notFound().build();
+        when(restTemplate.exchange(any(URI.class), eq(HttpMethod.GET), any(HttpEntity.class), any(ParameterizedTypeReference.class))).thenReturn(response);
+
+        hackedServiceImpl.getBreachedSites("Not found")
+                .subscribe(breachedSites -> {
+                    List<String> expected = Arrays.asList();
+                    assertThat(breachedSites, equalTo(expected));
+                });
+    }
 }

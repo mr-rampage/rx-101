@@ -24,9 +24,16 @@ import java.util.stream.Collectors;
 @Service
 public class HackedServiceImpl implements HackedService {
     private static final String WEB_SERVICE = "https://haveibeenpwned.com/api/v2/breachedaccount/";
+    private static final int ALLOWABLE_BREACHES = 5;
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Override
+    public Observable<Boolean> isSafeIdentifier(String identifier) {
+        Observable<List<String>> breachedSites = getBreachedSites(identifier);
+        return breachedSites.map(sites -> sites.size() <= ALLOWABLE_BREACHES);
+    }
 
     @Override public Observable<List<String>> getBreachedSites(String identifier) {
         return Observable.create(observer -> {
