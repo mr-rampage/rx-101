@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ca.wbac</groupId>
-	<artifactId>timesheet</artifactId>
+	<artifactId>rx-101</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>timesheet</name>
+	<name>rx-101</name>
 
 	<modules>
 		<module>./client</module>

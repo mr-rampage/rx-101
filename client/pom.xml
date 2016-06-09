@@ -5,17 +5,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>ca.wbac</groupId>
-		<artifactId>timesheet</artifactId>
+		<artifactId>rx-101</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../</relativePath>		
 	</parent>
-	<artifactId>timesheet-client</artifactId>
+	<artifactId>rx-101-client</artifactId>
 	<packaging>jar</packaging>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.5.0</version>
 				<executions>
 					<execution>
 						<id>clean-javascript</id>

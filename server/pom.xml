@@ -5,12 +5,12 @@
 
 	<parent>
 		<groupId>ca.wbac</groupId>
-		<artifactId>timesheet</artifactId>
+		<artifactId>rx-101</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>timesheet-server</artifactId>
+	<artifactId>rx-101-server</artifactId>
   <packaging>war</packaging>
 
 	<dependencyManagement>
@@ -62,7 +62,7 @@
 		</dependency>
     <dependency>
       <groupId>ca.wbac</groupId>
-      <artifactId>timesheet-client</artifactId>
+      <artifactId>rx-101-client</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 	</dependencies>
@@ -88,9 +88,8 @@
 							<goal>unpack-dependencies</goal>
 						</goals>
 						<configuration>
-							<includeArtifactIds>timesheet-client</includeArtifactIds>
-							<overWrite>false</overWrite>
-              <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
+							<includeArtifactIds>rx-101-client</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/classes/static</outputDirectory>
 							<includes>**/*</includes>
 						</configuration>
 					</execution>
