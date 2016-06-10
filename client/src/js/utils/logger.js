@@ -1,10 +1,10 @@
 import Rx from "rx/dist/rx.lite";
 
-function createLogger() {
+function createLogger(prefix) {
   return Rx.Observer.create(
-    value => console.info(value),
-    err => console.error(err),
-    () => console.info('Complete')
+    value => console.info(prefix, value),
+    err => console.error(prefix, err),
+    () => console.info(prefix, 'Complete')
   );
 }
 

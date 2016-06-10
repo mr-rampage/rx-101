@@ -10,6 +10,6 @@ const usernameConfig = {
 };
 $(document).ready(() => {
   const usernameInput = usernameFactory(usernameConfig);
-  usernameInput.stream.subscribe(loggerFactory());
+  usernameInput.stream.subscribe(loggerFactory('Username component'));
   $('body').append(usernameInput.view);
 });

@@ -10,10 +10,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import rx.Observable;
+import rx.subjects.AsyncSubject;
 
 import java.net.URI;
 import java.util.ArrayList;
@@ -36,14 +37,19 @@ public class HackedServiceImpl implements HackedService {
     }
 
     @Override public Observable<List<String>> getBreachedSites(String identifier) {
-        return Observable.create(observer -> {
-            try {
-                observer.onNext(getBreaches(identifier));
-                observer.onCompleted();
-            } catch (RestClientException e) {
-                observer.onError(e);
+        AsyncSubject<List<String>> subject = AsyncSubject.create();
+        try {
+            subject.onNext(getBreaches(identifier));
+            subject.onCompleted();
+        } catch (HttpClientErrorException e) {
+            if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+                subject.onNext(new ArrayList<>());
+                subject.onCompleted();
+            } else {
+                subject.onError(e);
             }
-        });
+        }
+        return subject;
     }
 
     private List<String> getBreaches(String identifier) {
