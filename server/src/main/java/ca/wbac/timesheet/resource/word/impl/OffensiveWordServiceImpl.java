@@ -19,7 +19,7 @@ import java.util.Collections;
 
 @Service
 public class OffensiveWordServiceImpl implements OffensiveWordService {
-	private static final String WEB_SERVICE = "http://resource.purgomalum.com/resource/containsprofanity";
+	private static final String WEB_SERVICE = "http://www.purgomalum.com/service/containsprofanity";
 
 	@Autowired
 	private RestTemplate restTemplate;
