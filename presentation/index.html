@@ -37,8 +37,9 @@
   Microsoft was trying to allow developers to program against a common interface
   for concurrent programming across cloud resources and multiple cores.
 
-  NetFlix was working on solving their problems with minimizing network traffic
-  while maximizing their processor utilization through concurrent programming.
+  NetFlix was working on trying to solve the problem of how to dynamically 
+  adjust the streaming speed based on a consumer's variable bandwidth while 
+  minimizing buffering.
 
   LightBend/TypeSafe was working on adding features to their Play framework that
   would allow them to consume asynchronous data. Their product Akka IO was too
@@ -51,22 +52,8 @@
   trying to solve.
 -->
 
-      <div class="step" data-scale="0.5">
-        <p><img src="img/voltron.jpg"/></p>
-        <blockquote>
-          <p>A team united cannot be defeated.</p>
-          <p>- Voltron: Defender of the Universe</p>
-        </blockquote>
-      </div>
-
-<!--
-  As voltron once said, "A team united cannot be defeated". In this story the
-  solution was collaboration.
-
-  Anyone know the other famous quote by Voltron?
--->
-
       <div class="step" data-x="1000">
+        <p><img src="img/voltron.jpg"/></p>
         <blockquote>
           <p>Form feet and legs! Form arms and torso! And I'll form the head!</p>
           <p>- Voltron: Defender of the Universe</p>
@@ -74,8 +61,9 @@
       </div>
 
 <!-- 
-  LightBend, being the torso, brought NetFlix, Microsoft, Pivotal, Twitter, and
-  GitHub to the table to try and solve their shared problems.
+  As voltron once said, ".... ". LightBend realized the collaboration was the
+  only way to solve their problem. Engineers at LightBend brought NetFlix, 
+  Microsoft, Pivotal, and Twitter to the table to come up with a solution.
 -->
 
       <div class="step">
@@ -91,7 +79,7 @@
   The result of their collaboration was the Reactive Streams specification. 
   It's a set of 4 interfaces that allow developers to build reactive systems 
   without requiring low-level knowledge needed to build responsive, resilient, 
-  and elastic components.
+  and elastic systems.
 
   Elastic - the system should react to varying workloads by managing resources.
 
@@ -129,11 +117,11 @@
 -->
 
       <div class="step">
-        <!-- Rx Marbles -->
         <h2>Simple Api</h2>
         <ul>
+          <li>Microsoft Lingo (Java Lingo)</li>
           <li>Observable (Publisher)</li>
-          <li>Operator (Processor)</li>
+          <li>Operator/Subject (Processor)</li>
           <li>Observer (Subscriber)</li>
         </ul>
       </div>
@@ -154,6 +142,10 @@
         </ul>
       </div>
 <!-- 
+  (Remember everything can be a stream)
+
+  (Describe the architecture)
+
   (Show how to turn a DOM element into a stream and process it to a logging
   subscriber)
 
@@ -169,7 +161,7 @@
       <div class="step">
         <h2>Lessons Learned</h2>
         <ul>
-          <li>Thinking in Reactive takes time</li>
+          <li>Thinking in Reactive takes some time</li>
           <li>Testing scheduled asynchronous code was tricky</li>
           <li>Always implement onError for resiliency</li>
         </ul>
