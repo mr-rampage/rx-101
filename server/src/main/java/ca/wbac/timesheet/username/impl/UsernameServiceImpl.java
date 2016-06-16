@@ -41,7 +41,7 @@ class UsernameServiceImpl implements UsernameService {
     }
 
     private boolean isAlphanumeric(String username) {
-        return Pattern.matches("^[a-zA-Z0-9]*$", username);
+        return Pattern.matches("^[a-zA-Z0-9@]*$", username);
     }
 
 }

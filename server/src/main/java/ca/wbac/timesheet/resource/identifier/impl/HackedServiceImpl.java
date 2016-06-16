@@ -17,6 +17,7 @@ import rx.Observable;
 import rx.subjects.AsyncSubject;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +34,7 @@ public class HackedServiceImpl implements HackedService {
     @Override
     public Observable<Boolean> isSafeIdentifier(String identifier) {
         Observable<List<String>> breachedSites = getBreachedSites(identifier);
-        return breachedSites.map(sites -> sites.size() <= ALLOWABLE_BREACHES);
+        return breachedSites.map(sites -> sites.size() <= ALLOWABLE_BREACHES).delay(1, TimeUnit.SECONDS);
     }
 
     @Override public Observable<List<String>> getBreachedSites(String identifier) {
