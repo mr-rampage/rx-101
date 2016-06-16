@@ -163,7 +163,17 @@
       </div>
 
 <!--
-  How does it work? (Do a demo using Rx Marbles)
+  Most implementations have factories to generate Observables from anything:
+
+  Simply:
+    Create an Observable
+    Operators/Processors are both observables and observers. They can be used to 
+      compose and transform streams with operators.
+    Observers subscribe to streams to perform side-effects.
+
+  Demonstrate using RxMarbles:
+    Use the map to demonstrate transformation
+    Use combineLatest to demonstrate composition
 -->
 
       <div class="demo list step" data-x="0" data-y="2800" data-rotate-y="180">
@@ -178,6 +188,10 @@
         </ul>
       </div>
 <!-- 
+  Load up:
+    https://haveibeenpwned.com/
+    http://www.purgomalum.com/
+
   (Remember everything can be a stream)
 
   (Describe the architecture)
