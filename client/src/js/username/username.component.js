@@ -16,12 +16,13 @@ function createUsernameComponent(config, scheduler) {
     .flatMapLatest(usernameService.isAvailable)
     .startWith(false);
 
-  const usernameStream = Rx.Observable.combineLatest(username, isAvailable)
+  const usernameStream = Rx.Observable.zip(username, isAvailable)
     .map((results) => {
       const [username, isAvailable] = results;
       return isAvailable ? username : ''
     })
-    .distinctUntilChanged();
+    .distinctUntilChanged()
+    .publish();
 
   componentUtils.markInvalidElement(element, usernameStream);
 

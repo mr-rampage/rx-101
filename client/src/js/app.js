@@ -11,5 +11,6 @@ const usernameConfig = {
 $(document).ready(() => {
   const usernameInput = usernameFactory(usernameConfig);
   usernameInput.stream.subscribe(loggerFactory('Username component'));
+  usernameInput.stream.connect();
   $('body').append(usernameInput.view);
 });

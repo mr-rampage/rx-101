@@ -15,18 +15,24 @@ describe('Username Component', () => {
   });
 
   beforeEach(() => {
+    const observer = Rx.Observer.create(
+        (value) => username = value,
+        e => console.warn(e),
+        () => console.info('done')
+    );
     const usernameConfig = DataItemBuilder.withName('foo')
       .withPrompt('label').withType('text').build();
 
     const usernameComponent = Username(usernameConfig, scheduler);
-    usernameComponent.stream.subscribe(value => username = value);
+    usernameComponent.stream.subscribe(observer);
+    usernameComponent.stream.connect();
 
     input = usernameComponent.view.find('input');
   });
 
   it('should default to blank for invalid input', () => {
     doKeyUpTest(undefined, '');
-    doKeyUpTest('a', '');
+    doKeyUpTest(null, '');
   });
 
   it('should set the username for valid input after debounce', (done) => {
