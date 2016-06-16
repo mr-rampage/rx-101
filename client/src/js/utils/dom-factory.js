@@ -1,4 +1,4 @@
-import $ from "cash-dom/dist/cash.min"
+import $ from "cash-dom/dist/cash.min";
 
 function createFormComponent(config) {
   const label = $(`<label><span>${config.prompt || ''}</span></label>`);
@@ -7,14 +7,15 @@ function createFormComponent(config) {
 }
 
 function createInput(config) {
-  switch(config.type) {
+  switch (config.type) {
     case 'text': return createTextInput(config);
     default: return $('div');
-  };
+  }
 }
 
 function createTextInput(config) {
-  const template = `<input type="${config.type}" name="${config.name}" value="${config.value || ''}"/>`;
+  const template = `<input type="${config.type}" name="${config.name}"` +
+    ` value="${config.value || ''}"/>`;
   return $(template);
 }
 

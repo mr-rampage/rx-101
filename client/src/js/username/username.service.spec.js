@@ -1,5 +1,5 @@
 import Rx from "rx/dist/rx.lite";
-import usernameService from "./username.service"
+import usernameService from "./username.service";
 import 'whatwg-fetch';
 
 describe('usernameService', () => {
@@ -7,9 +7,9 @@ describe('usernameService', () => {
 
   beforeEach(() => {
     const fakePromise = new Promise((resolve, reject) => {
-      promiseHelper = { resolve: resolve, reject: reject };
+      promiseHelper = {resolve: resolve, reject: reject};
     });
-    spyOn(window, 'fetch').and.returnValue(fakePromise); 
+    spyOn(window, 'fetch').and.returnValue(fakePromise);
   });
 
   it('should return false for an falsy username', () => {
@@ -40,9 +40,11 @@ describe('usernameService', () => {
     let actual;
     promiseHelper.resolve(new Response('true'));
     usernameService.isAvailable('Fred Flintstone')
-      .subscribe((response) => actual = response);
-    expect(window.fetch).toHaveBeenCalledWith('/api/username/Fred Flintstone?isValid');
+    .subscribe(response => {
+      actual = response;
+    });
+    expect(window.fetch)
+      .toHaveBeenCalledWith('/api/username/Fred Flintstone?isValid');
     expect(actual, true);
   });
-
 });

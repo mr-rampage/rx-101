@@ -1,10 +1,10 @@
 import Rx from "rx/dist/rx.all";
 import componentUtils from "../utils/component-utils";
-import DOMFactory from "../utils/dom-factory";
+import domFactory from "../utils/dom-factory";
 import usernameService from "./username.service";
 
 function createUsernameComponent(config, scheduler) {
-  const element = DOMFactory(config);
+  const element = domFactory(config);
 
   const username = Rx.Observable
     .fromEvent(element.find('input'), 'input')
@@ -17,9 +17,9 @@ function createUsernameComponent(config, scheduler) {
     .startWith(false);
 
   const usernameStream = Rx.Observable.zip(username, isAvailable)
-    .map((results) => {
+    .map(results => {
       const [username, isAvailable] = results;
-      return isAvailable ? username : ''
+      return isAvailable ? username : '';
     })
     .distinctUntilChanged()
     .publish();

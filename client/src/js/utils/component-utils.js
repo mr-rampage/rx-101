@@ -2,7 +2,7 @@ import Rx from "rx/dist/rx.lite";
 
 function markInvalidElement(element, observable) {
   const invalidObserver = Rx.Observer.create(
-    value => value ? element.removeClass('invalid') : 
+    value => value ? element.removeClass('invalid') :
         element.addClass('invalid')
   );
 

@@ -1,6 +1,5 @@
-import DOMFactory from "./dom-factory";
-import DataItemBuilder from "../../../test/js/utils/c+j-builders.js"
-import $ from "cash-dom/dist/cash.min"
+import domFactory from "./dom-factory";
+import DataItemBuilder from "../../../test/js/utils/c+j-builders.js";
 
 describe('DOMFactory', () => {
   let view;
@@ -11,7 +10,7 @@ describe('DOMFactory', () => {
       .withType('text')
       .build();
 
-    view = DOMFactory(textItem);
+    view = domFactory(textItem);
   });
 
   it('should create a labeled element', () => {
