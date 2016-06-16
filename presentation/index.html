@@ -2,57 +2,80 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1024" />
-    <title>Reactive eXtensions 101</title>
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <meta name="viewport" content="width=1920" />
+    <title>Reactive Streams</title>
+    <link href='https://fonts.googleapis.com/css?family=Oleo+Script' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Lato:700"
+    rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
     <div id="impress">
-      <div class="title step" data-x="0" data-y="0" data-scale="2">
+      <div class="title framed-text step" data-x="0" data-y="0" data-scale="2">
         <h1>Reactive Streams</h1>
         <h2>... with Reactive eXtensions</h2>
       </div>
 
 <!-- 
-  Reactive streams is a form of the functional reactive programming paradigm.
+  Reactive streams is a specification used to build reactive systems.
+  Reactive systems are systems that are:
+
+    Responsive - the system should respond as soon as possible.
+    Resilient - the system react to failure.
+    Elastic - the system should stay responsive under varying workload by
+    increasing/decreasing resource usage.
+    Message Driven - the system relies on asynchornous message-passing to ensure
+    loose coupling, isolation, and location transparency.
+
   It's the result of having big data and having the desire to understand that
-  data quickly.
+  data quickly. The specification started around 2010 when four groups were
+  trying to solve similiar problems.
  -->
 
-      <div class="step">
-        <h2>Problems</h2>
-        <ul>
-          <li>Concurrent programming - Cloud, Multi-Core, Multi-Server</li>
-          <li>Asychronous &amp; event based computation</li>
-          <li>Consume asynchronous data</li>
-          <li>Reduce blocking on web services</li>
-        </ul>
+      <div class="framed-text problem-text step" data-x="0" data-y="700">
+        <p>Concurrent Programming</p>
       </div>
-
 <!--
-  Around 2010 - 2013, four companies were trying to solve similiar problems.
+  Microsoft was trying to develop a common interface that would allow developers
+  to do concurrent programming across cloud resources and multiple cores.
+-->
 
-  Microsoft was trying to allow developers to program against a common interface
-  for concurrent programming across cloud resources and multiple cores.
-
+      <div class="framed-text problem-text step" data-x="0" data-y="850">
+        <p>Asychronous &amp; event based computation</p>
+      </div>
+<!--
   NetFlix was working on trying to solve the problem of how to dynamically 
   adjust the streaming speed based on a consumer's variable bandwidth while 
   minimizing buffering.
+-->
 
+      <div class="framed-text problem-text step" data-x="0" data-y="1000">
+        <p>Consume asynchronous data</p>
+      </div>
+<!--
   LightBend/TypeSafe was working on adding features to their Play framework that
   would allow them to consume asynchronous data. Their product Akka IO was too
   low level to be usable.
-
-  Pivotal was working on reducing blocking on their web services with Project
-  Reactor.
-
-  Futures/Promises and callbacks were too simple to solve the problems they were
-  trying to solve.
 -->
 
-      <div class="step" data-x="1000">
+      <div class="framed-text problem-text step" data-x="0" data-y="1150">
+        <p>Reduce blocking on web services</p>
+      </div>
+<!--
+  Pivotal was working on reducing blocking on their web services with Project
+  Reactor.
+-->
+
+      <div class="problems step" data-x="0" data-y="900">
+      </div>
+<!--
+  In all cases they were looking for better ways to program asynchronously
+  because Futures/Promises and callbacks were ineffective at solving their
+  problems in a maintainable way.
+-->
+
+      <div class="collaboration step" data-x="0" data-y="1620">
         <p><img src="img/voltron.jpg"/></p>
         <blockquote>
           <p>Form feet and legs! Form arms and torso! And I'll form the head!</p>
@@ -61,41 +84,50 @@
       </div>
 
 <!-- 
-  As voltron once said, ".... ". LightBend realized the collaboration was the
-  only way to solve their problem. Engineers at LightBend brought NetFlix, 
-  Microsoft, Pivotal, and Twitter to the table to come up with a solution.
+  Around 2012, LightBend realized that these independent problems could be
+  solved in a unified way. Engineers at LightBend invited NetFlix, Microsoft, 
+  Pivotal, Twitter, and RedHat to start a new open source project.
 -->
 
-      <div class="step">
-        <h2>Reactive Streams specification</h2>
-        <ul>
-          <li>Java 9 - java.util.concurrent.Flow</li>
-          <li>JavaScript (ES 7... maybe 8?) - es-observables</li>
-        </ul>
-        <p>Work on standardizing processors TBD.</p>
+      <div class="specification framed-text step" data-x="0" data-y="1400" data-rotate-y="90" data-scale="2">
+        <h2>Reactive Streams</h2>
       </div>
 
 <!--
   The result of their collaboration was the Reactive Streams specification. 
   It's a set of 4 interfaces that allow developers to build reactive systems 
-  without requiring low-level knowledge needed to build responsive, resilient, 
-  and elastic systems.
-
-  Elastic - the system should react to varying workloads by managing resources.
+  without requiring low-level knowledge needed to build reactive systems.
 
   Two goals of the specification are to ensure implementations:
     Manage stream data across asychronous boundaries (threads, networks, ...)
     Ensuring consumers are not forced to buffer any data
+
+  These specifications will be available in Java 9 and possibly ES7.
 -->
 
-      <div class="step">
-        <h2>Implementations</h2>
+      <div class="java-9 specification list step" data-z="600" data-y="1850" data-rotate-y="90">
+        <h2>Java 
+          <span class="future">9</span> 
+          <small>java.util.concurrent.Flow</small>
+        </h2>
         <ul>
           <li>NetFlix RxJava (Java 6+)</li>
           <li>Lightbend Akka</li>
           <li>Spring Reactor/Spring 5</li>
           <li>RedHat Vert.x</li>
         </ul>
+      </div>
+
+<!--
+  However, you can use them today as there are several implementations
+  available. All implementations are compatible with each other as well.
+-->
+
+      <div class="es-7 specification list step" data-z="-800" data-y="1850" data-rotate-y="90">
+        <h2>JavaScript 
+          <span class="future">(ES7)</span> 
+          <small>es-observables</small>
+        </h2>
         <ul>
           <li>Rx.js (IE 6+)</li>
           <li>Kefir.js</li>
@@ -104,25 +136,29 @@
         </ul>
       </div>
 
+
 <!-- 
-  There are several Java based implementations and they are all compatible with
-  each other. As well, there are several Javascript implementations, but I'm
-  unsure whether or not they are compatible. 
-  
   Reactive eXtensions is a set of implementations for different languages where 
   the vocabulary is standardized. Originally created by Microsoft, now open 
-  sourced and maintained by the community.
+  sourced and maintained by the community. RxJava and RxJs are just two of the
+  many Reactive eXtension implementations.
   
   RxJs will be bundled with Angular 2.
 -->
 
-      <div class="step">
-        <h2>Simple Api</h2>
-        <ul>
-          <li>Microsoft Lingo (Java Lingo)</li>
-          <li>Observable (Publisher)</li>
-          <li>Operator/Subject (Processor)</li>
-          <li>Observer (Subscriber)</li>
+      <div class="api step" data-x="0" data-y="2800" data-rotate-y="90">
+        <h2>Api</h2>
+        <ul class="ms">
+          <li>Microsoft</li>
+          <li>Observable</li>
+          <li>Operator/Subject</li>
+          <li>Observer</li>
+        </ul>
+        <ul class="java">
+          <li>Java</li>
+          <li>Publisher</li>
+          <li>Processor</li>
+          <li>Subscriber</li>
         </ul>
       </div>
 
@@ -130,8 +166,8 @@
   How does it work? (Do a demo using Rx Marbles)
 -->
 
-      <div class="step">
-        <h2>Simple Demo</h2>
+      <div class="demo list step" data-x="0" data-y="2800" data-rotate-y="180">
+        <h2>Demo</h2>
         <p>Build a component that creates a user name that is:</p>
         <ul>
           <li>between 3 and 32 characters</li>
@@ -158,7 +194,8 @@
 
   (Show how to test an observable)
 -->
-      <div class="step">
+      <div class="summary list step" data-x="0" data-y="2800" data-rotate-y="180"
+        data-rotate-x="90">
         <h2>Lessons Learned</h2>
         <ul>
           <li>Thinking in Reactive takes some time</li>

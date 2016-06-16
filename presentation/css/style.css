@@ -45,9 +45,9 @@ table {
 }
 
 body {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'Lato', sans-serif;
+    font-size: 48px;
     min-height: 740px;
-    height: 95vh;
 }
 
 b, strong { font-weight: bold }
@@ -76,10 +76,15 @@ a:focus {
 
 h1 {
   font-size: 2em;
+  font-family: 'Oleo Script', cursive;
+  color: #7F171F;
 }
 
 h2 {
+  font-family: 'Oleo Script', cursive;
   font-size: 1.75em;
+  margin-bottom: 0.25em;
+  color: #177F75;
 }
 
 .impress-enabled .step {
@@ -98,6 +103,7 @@ h2 {
 .step {
   position: relative;
   width: 100vw;
+  height: 100vh;
   padding: 2.5vw;
   margin: 2.5vw 0;
 
@@ -107,67 +113,138 @@ h2 {
   -o-box-sizing:      border-box;
   box-sizing:         border-box;
 
-  font-family: 'PT Serif', georgia, serif;
-  font-size: 48px;
+  font-size: 1em;
   text-align: center;
 }
 
-.abstract p {
+.framed-text {
+  width: auto;
+  height: auto;
+  white-space: nowrap;
+}
+
+.title h2 {
+  font-size: 0.5em;
+  text-align: right;
+}
+
+.problem-text.past {
+  opacity: 1;
+}
+
+.collaboration {
   text-align: left;
-  padding-bottom: 1em;
 }
 
-.abstract p:first-child {
-  font-size: 1.25em;
+.collaboration > * {
+  display: inline-block;
+  width: 48%;
+  height: 100%;
 }
 
-.demands ul li {
-  line-height: 1.5em;
+.collaboration p img {
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.collaboration.past p img {
   opacity: 0.1;
-
-  -webkit-transition: 0.5s;
-  -moz-transition:    0.5s;
-  -ms-transition:     0.5s;
-  -o-transition:      0.5s;
-  transition:         0.5s;
+  -webkit-transition: opacity 1s;
+  -moz-transition:    opacity 1s;
+  -ms-transition:     opacity 1s;
+  -o-transition:      opacity 1s;
+  transition:         opacity 1s;
 }
 
-.demands.present ul li:first-child {
-  opacity: 1;
-
-  -webkit-transition-delay: 1s;
-  -moz-transition-delay:    1s;
-  -ms-transition-delay:     1s;
-  -o-transition-delay:      1s;
-  transition-delay:         1s;
+.collaboration blockquote {
+  font-family: 'Oleo Script', cursive;
 }
 
-.demands.present ul li:nth-child(2) {
-  opacity: 1;
-
-  -webkit-transition-delay: 2s;
-  -moz-transition-delay:    2s;
-  -ms-transition-delay:     2s;
-  -o-transition-delay:      2s;
-  transition-delay:         2s;
+.collaboration blockquote p:first-child:after,
+.collaboration blockquote p:first-child:before {
+  content: '"';
 }
 
-.demands.present ul li:nth-child(3) {
-  opacity: 1;
-
-  -webkit-transition-delay: 3s;
-  -moz-transition-delay:    3s;
-  -ms-transition-delay:     3s;
-  -o-transition-delay:      3s;
-  transition-delay:         3s;
+.collaboration blockquote p:first-child:before {
+  margin-left: -0.5ex;
 }
 
-.demands.present ul li:nth-child(4) {
+.collaboration blockquote p:last-child {
+  font-size: 0.5em;
+  text-align: right;
+}
+
+.specification {
+  width: auto;
+}
+
+.specification h2 {
+  text-align: left;
+  white-space: nowrap;
+}
+
+.specification small {
+  color: #666;
+  font-size: 0.5em;
+}
+
+.specification.future {
+  opacity: 1;
+}
+
+.specification.past {
+  opacity: 0.3;
+}
+
+.specification.present span.future,
+.specification.present small {
+  opacity: 0;
+
+  -webkit-transition: opacity 1s;
+  -moz-transition:    opacity 1s;
+  -ms-transition:     opacity 1s;
+  -o-transition:      opacity 1s;
+  transition:         opacity 1s;
+}
+
+.specification.future ul {
+  opacity: 0;
+}
+
+.specification.present ul {
   opacity: 1;
 
-  -webkit-transition-delay: 4s;
-  -moz-transition-delay:    4s;
-  -ms-transition-delay:     4s;
-  -o-transition-delay:      4s;
-  transition-delay:         4s;
+  -webkit-transition: opacity 4s;
+  -moz-transition:    opacity 4s;
+  -ms-transition:     opacity 4s;
+  -o-transition:      opacity 4s;
+  transition:         opacity 4s;
+}
+
+.api ul {
+  display: inline-block;
+  width: 40%;
+  text-align: left;
+  line-height: 1.25em;
+}
+
+.api ul li:first-child {
+  font-size: 1.05em;
+  text-decoration: underline;
+}
+
+.api .java {
+  text-align: right;
+}
+
+.demo > *:not(h2) {
+  text-align: left;
+}
+
+.list ul {
+  list-style-type: circle;
+  line-height: 1.25em;
+  text-align: left;
+  margin-left: 1em;
 }
